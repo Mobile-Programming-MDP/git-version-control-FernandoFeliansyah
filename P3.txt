@@ -1,0 +1,104 @@
+//Objek
+/*
+  class Mobil {
+  String merek, model;
+  int tahunProduksi;
+  
+  Mobil(this.merek, this.model, this.tahunProduksi);
+  
+  void infoMobil() {
+    print('$merek $model, Tahun: $tahunProduksi');
+  }
+}
+*/
+
+
+class Kendaraan {
+  String merek;
+  int tahunProduksi;
+  
+  Kendaraan (this.merek, this.tahunProduksi);
+  
+  void infoKendaraan() {
+    print('$merek, Tahun: $tahunProduksi');
+  }
+}
+
+class Mobil extends Kendaraan {
+  int jumlahPintu;
+  
+  Mobil(String merek, int tahunProduksi, this.jumlahPintu) 
+    : super(merek, tahunProduksi);
+  
+  void infoMobil() {
+    print('Mobil $merek, Tahun: $tahunProduksi, Pintu: $jumlahPintu');
+  }
+}
+
+//Implicit Interface
+
+class Walkable {
+  void fly(){
+    print("I'm, walking");
+  }
+}
+
+mixin Simmable {
+  void fly(){
+    print("I'm, swimming");
+  }
+}
+
+class Animal {
+  String name = "";
+  int age = 0;
+  double weight = 0;
+  Animal(this.name, this.age, this.weight);
+  
+  void eat() { 
+    print('$name is eating');
+    weight = weight + 0.2;
+  }
+  
+  void sleep() {
+    print('$name is sleeping');
+  }
+}
+
+class Bird extends Animal implements Flyable {
+  String featherColor;
+  Bird(String name, int age, double weight, this.featherColor)
+  : super(name, age, weight);
+  
+  //polymorphisme
+  @override
+  void fly() {
+    print('$name is flying');
+  }
+}
+
+class Duck extends Bird with Walkable, FLyable, Simmable {
+  Duck();
+}
+
+void main() {
+//Objek
+//   var mobil1 = Mobil('Toyota', 'Camry', 2022);
+//   var mobil2 = Mobil('Honda', 'Civic', 2021);
+  
+//   mobil1.infoMobil();
+//   mobil2.infoMobil();
+  
+//   var mobil1 = Mobil('Toyota', 2022, 4);
+  
+//   mobil1.infoMobil();
+//   mobil1.infoKendaraan();
+  
+//Implicit
+  var mdpBird = Bird('Gagak', 2, 0.7, 'Black');
+  mdpBird.fly();
+  print('Berat Burung : ${mdpBird.weight}');
+  mdpBird.eat();
+  print("Berat Burung Sekarang : ${mdpBird.weight}"); 
+  
+}
